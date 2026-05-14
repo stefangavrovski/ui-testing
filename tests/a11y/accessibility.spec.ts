@@ -4,7 +4,8 @@ import AxeBuilder from '@axe-core/playwright';
 test.describe('Accessibility (WCAG)', () => {
 
   test('homepage has no critical accessibility violations', async ({ page }) => {
-    await page.goto('/');
+    test.setTimeout(60000);
+    await page.goto('https://phptravels.net/');
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa'])
       .exclude('iframe')

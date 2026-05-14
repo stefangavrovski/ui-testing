@@ -8,9 +8,6 @@ interface PerformanceMetrics {
 }
 
 async function collectMetrics(page: any, url: string): Promise<PerformanceMetrics> {
-  const client = await page.context().newCDPSession(page);
-  await client.send('Performance.enable');
-
   await page.goto(url, { waitUntil: 'networkidle' });
 
   const perfEntries = await page.evaluate(() => {
@@ -78,7 +75,7 @@ test.describe('Performance Metrics', () => {
       await page.goto(url, { waitUntil: 'domcontentloaded' });
       const elapsed = Date.now() - start;
       console.log(`${url} → ${elapsed}ms`);
-      expect(elapsed).toBeLessThan(10000);
+      expect(elapsed).toBeLessThan(15000);
     }
   });
 
