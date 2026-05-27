@@ -31,7 +31,7 @@ jobs:
 
       - name: Run performance tests
         run: npx playwright test tests/performance/
-        continue-on-error: true   # performance is flaky on shared CI runners
+        continue-on-error: true
 
       - name: Run responsive tests
         run: npx playwright test tests/responsive/

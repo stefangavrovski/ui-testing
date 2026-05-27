@@ -3,6 +3,9 @@ name: Update Snapshots
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   update-snapshots:
     runs-on: ubuntu-latest
